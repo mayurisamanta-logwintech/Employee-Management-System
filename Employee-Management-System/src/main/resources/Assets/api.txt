@@ -1,0 +1,38 @@
+User related API :
+==================
+
+/user/signup
+/user/login
+/user/assignById/{email}/authority/{authority_id}
+/user/assignByName/{email}/authority/{authority_name}
+/user/deleteById/{user_id}
+/user/deleteByEmail/{email}
+/user/deallocateById/{email}/authority/{authority_id}
+/user/deallocateByName/{email}/authority/{authority_name}
+/user/getById/{user_id}
+/user/getByEmail/{email}
+/user/getAll
+/user/updateById/{user_id}
+/user/updateByEmail/{email}
+
+Authority related API :
+=======================
+/authority/
+/authority/deleteById/{authority_id}
+/authority/deleteByName/{authority_name}
+/authority/getById/{authority_id}
+/authority/getByName/{authority_name}
+/authority/getAll
+/authority/updateById/{authority_id}
+/authority/updateByName/{authority_name}
+
+Privilege related API :
+=======================
+/privilege/
+/privilege/deleteById/{privilege_id}
+/privilege/getById/{privilege_id}
+/privilege/updateById/{privilege_id}
+/privilege/assignById/{privilege_id}/authority/{authority_id}
+/privilege/assignByName/{privilege_id}/authority/{authority_name}
+/privilege/deallocateById/{privilege_id}/authority/{authority_id}
+/privilege/deallocateByName/{privilege_id}/authority/{authority_name}

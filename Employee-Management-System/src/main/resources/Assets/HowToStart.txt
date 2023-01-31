@@ -1,0 +1,36 @@
+1. Do relevant changes in application.properties file related to database
+
+2. Run application, it will create tables in database
+
+3. Add User using "/user/signup". Create one Authority manually ("ADMIN") and assign with user.
+
+4. All the privilege related api can be accessed by "ADMIN" by default. --> You can change this in com.security.SpringSecurity.config.ProjectConfig class
+
+5. Add all api using "/privilege/" (refer api.txt)  and authority using "/authority/".
+
+6. Assign privilege to authority using "/privilege/assignById/{privilege_id}/authority/{authority_id}" or
+"/privilege/assignByName/{privilege_id}/authority/{authority_name}".
+
+Ex : You want to give access of "/authority/updateByName/{authority_name}" (id : 2) to authority "USER" (id : 4)
+then api will be "/privilege/assignById/2/authority/4" or "/privilege/assignByName/2/authority/user"
+
+7. Assign authority to user using "/user/assignById/{email}/authority/{authority_id}" or
+"/user/assignByName/{email}/authority/{authority_name}"
+
+Ex : You want to give authority "USER" (id : 4) to user contains email id "mayuri@gmail.com"
+then api will be "/user/assignById/mayuri@gmail.com/authority/4" or "/user/assignByName/mayuri@gmail.com/authority/user"
+
+Now user mayuri@gmail.com can access all the api or privilege assign to authority "USER".
+
+8. Add all the authority added in database to com.security.SpringSecurity.config.ProjectConfig class (line 37)
+
+Ex : You have added "HR", "FRONTEND", "BACKEND", "USER" and "ADMIN" authorities
+then code will look like --
+
+.antMatchers(getPrivilege("USER")).hasAuthority("USER")
+.antMatchers(getPrivilege("ADMIN")).hasAuthority("ADMIN")
+.antMatchers(getPrivilege("HR")).hasAuthority("HR")
+.antMatchers(getPrivilege("FRONTEND")).hasAuthority("FRONTEND")
+.antMatchers(getPrivilege("BACKEND")).hasAuthority("BACKEND")
+
+Here getPrivilege method will retrieve all api from database as per given authority
